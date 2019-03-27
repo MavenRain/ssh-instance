@@ -118,7 +118,7 @@ resource "aws_instance" "ssh_host" {
   key_name = "hephaestus-pair"
   subnet_id              = "${element(aws_subnet.default.*.id,0)}"
   vpc_security_group_ids = ["${aws_security_group.default.id}"]
-  user_data              = "sudo apt-get update;sudo apt-get install git"
+  user_data              = "sudo apt-get update;sudo apt-get install git unzip;sudo unzip terraform_0.11.11_linux_amd64.zip;sudo mv terraform /usr/local/bin/"
 }
 
 output "ssh_host" {
